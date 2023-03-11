@@ -1,5 +1,7 @@
 # On Testing
 
+<Badge type="info" text="published on 2022-08-03" />
+
 ::: info
 Cross posted from the [Cloudflight engineering blog](https://engineering.cloudflight.io/on-testing).
 :::
