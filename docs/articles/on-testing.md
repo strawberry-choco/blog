@@ -6,8 +6,6 @@
 Cross posted from the [Cloudflight engineering blog](https://engineering.cloudflight.io/on-testing).
 :::
 
-[[toc]]
-
 I have seen strong obsession with terminologies when it comes to testing, like integration tests versus unit tests, should there be mocks in unit tests and so on. Working with people who care to improve is a bliss. Nonetheless, being too focused on those concepts might not be a good idea. The essence of testing, the thing that actually matters, stays the same no matter the concepts built on top of it.
 
 ## The Purpose Of Automated Tests
