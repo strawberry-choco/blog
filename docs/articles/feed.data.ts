@@ -50,7 +50,7 @@ function getArticle(file: string, postDir: string): Article {
 
   const article: Article = {
     title: data.title,
-    href: `/articles/${file.replace(/\.md$/, ".html")}`,
+    href: `./${file.replace(/\.md$/, ".html")}`,
     date: formatDate(data.date),
     excerpt: excerpt != null ? md.render(excerpt) : "",
   };
