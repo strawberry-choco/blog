@@ -1,3 +1,8 @@
+---
+title: Why is Rxjs unreadable?
+date: 2022-08-16
+---
+
 # Why is Rxjs unreadable?
 
 <Badge type="info" text="published on 2022-08-16" />
@@ -11,16 +16,16 @@ RxJS has become quite popular in the frontend field, and a lot of people use it 
 RxJS has the concept of an observable, which gives us values over time. You can think of it as having a variable that tells us its value has changed, or simply as a stream. All kinds of operations can be applied on top of it with the `.pipe` method.
 
 ```typescript
-const value$ = new BehaviorSubject(9000)
+const value$ = new BehaviorSubject(9000);
 
 const transformedValue$ = value$.pipe(
-    map(value => {
-        // ...
-    }),
-    filter(value => {
-        // ...
-    })
-)
+  map((value) => {
+    // ...
+  }),
+  filter((value) => {
+    // ...
+  })
+);
 ```
 
 Everything looks fine so far, but what if we have complex calculations or need to combine multiple observables?
@@ -78,7 +83,7 @@ const value4 = await // ...
 As you can see, there is no nesting and the logic is not scattered all over the place anymore. Now the question becomes can we do something similar to RxJS? For that, we can take a look at Svelte.
 
 ```typescript
-$: reactiveValue = doSomeStuff(foo, bar)
+$: reactiveValue = doSomeStuff(foo, bar);
 ```
 
 With this, `reactiveValue` will be recalculated whenever `foo` or `bar` changes. We can of course go a step further:
@@ -93,4 +98,3 @@ $: value4 = // ...
 Just like what `async/await` did to promises, the unconventional syntax from Svelte solved the callback hell problem for RxJS. Well, strictly speaking, anything with a `.subscribe` method works with Svelte. Thus, RxJS just happened to benefit from it. We can say `$:` is syntax sugar for `.subscribe`, just like `await` is syntax sugar for `.then` (`await` works on anything that has a `.then` method, not only promises).
 
 The approach from Svelte only works in Svelte, though, since we need the Svelte compiler to transform the code into normal JavaScript with the same behavior. There is no custom syntax support for RxJS in normal JavaScript right now. Nonetheless, it is an interesting solution to the challenges RxJS faces.
-

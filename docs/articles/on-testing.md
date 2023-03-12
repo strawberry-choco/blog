@@ -1,3 +1,8 @@
+---
+title: On Testing
+date: 2022-08-03
+---
+
 # On Testing
 
 <Badge type="info" text="published on 2022-08-03" />
@@ -102,13 +107,15 @@ Let's take a step back. Take a deep breath and ask ourselves the question: What 
 ## Mock Management
 
 Alright, we understood the pros and cons of mocking and when to apply it. The biggest drawback of mocks is the maintenance thereof. The setup cost is a one time payment, so in the long term it does not amount to much. So is there a way to reduce the maintenance cost? The answer is yes.
+
 ### Use Upstream-Provided Mocks
 
 It is not our responsibility anymore if the mocks are from the dependency maintainer. 😉 One example would be [ReadyAPI](https://swagger.io/solutions/mocking-and-virtualization/) for OpenAPI.
+
 ### Use Existing Mocks
 
 Have only one mock per dependency in the whole code base, and use that in every test in need of it. This way, the need to go through all uses of that dependency is not needed anymore.
+
 ### Consistent Mock Location
 
 Either place all mocks in one folder or directly where the actual implementation is. Removing the barriers to updating the mock will decrease the frequency of forgetting doing so.
-

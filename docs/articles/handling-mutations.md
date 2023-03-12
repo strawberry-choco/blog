@@ -1,3 +1,8 @@
+---
+title: Handling Mutations
+date: 2023-01-03
+---
+
 # Handling Mutations
 
 <Badge type="info" text="published on 2023-01-03" />
@@ -20,20 +25,20 @@ Imagine the following code:
 
 ```typescript
 const data = {
-    foo: 'hello',
-    world: 'bar'
+  foo: "hello",
+  world: "bar",
 };
 
 function doSomething(dataToRead) {
-    const fooValueBeforeCall = dataToRead.foo;
+  const fooValueBeforeCall = dataToRead.foo;
 
-    await apiCall();
+  await apiCall();
 
-    const fooValueAfterCall = dataToRead.foo;
+  const fooValueAfterCall = dataToRead.foo;
 }
 
 function modifyData(dataToModify) {
-    dataToModify.foo = 'some new value';
+  dataToModify.foo = "some new value";
 }
 
 doSomething(data);
@@ -78,16 +83,16 @@ We are not done, though. The aforementioned architecture only makes reasoning ea
 
 ```typescript
 let data = {
-    foo: 'hello',
-    world: 'bar'
+  foo: "hello",
+  world: "bar",
 };
 
 export function modifyFoo(newFoo) {
-    data.foo = newFoo;
+  data.foo = newFoo;
 }
 
 export function readData() {
-    return data;
+  return data;
 }
 ```
 
@@ -95,25 +100,24 @@ This implementation of the store looks fine, does it not? Accessors for writing 
 
 ```typescript
 let data = {
-    foo: 'hello',
-    world: 'bar'
+  foo: "hello",
+  world: "bar",
 };
 
 export function modifyFoo(newFoo) {
-    const updatedData = {
-        ...data,
-        foo: newFoo,
-    };
+  const updatedData = {
+    ...data,
+    foo: newFoo,
+  };
 
-    data = updatedData;
+  data = updatedData;
 }
 
 export function readData() {
-    return data;
+  return data;
 }
 ```
 
 Now, with the new implementation, the bug from our first code example is also solved.
 
 One question worth asking would be calling `readData` multiple times can lead to returning different data. Did we really fix the bug? The answer is yes. Reading from the store itself is considered a side effect, since the store is just a global variable with some abstractions around it. The bug we fixed is reading data from the input parameter always returning the same data, done by not mutating existing data anywhere.
-

@@ -1,3 +1,8 @@
+---
+title: Cutting the Folder Structure
+date: 2022-12-29
+---
+
 # Cutting the Folder Structure
 
 <Badge type="info" text="published on 2022-12-29" />
@@ -118,4 +123,3 @@ src/
 |- text-renderer/
 |- text-svg/
 ```
-

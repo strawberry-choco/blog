@@ -1,3 +1,8 @@
+---
+title: Defining Boundaries
+date: 2022-12-21
+---
+
 # Defining Boundaries
 
 <Badge type="info" text="published on 2022-12-21" />
@@ -13,6 +18,7 @@ With that being said, how do we do it? Initially, I wanted to reason that code s
 ## Starting from Zero
 
 So let's start from the very beginning instead. We have pieces of code, some get called and some call others. What we want to achieve is when we do a change in one of them, we want the area of effect to be as small as possible. We can do that by establishing clear boundaries between the code. The first question we need to ask is, what are boundaries? Boundaries are ways to communicate characteristics. I accept data with the following characteristics. I have the following characteristics when executed and so on. It is the language of defining contracts. The second question is, what ways exist to define those contracts? From my experience, there are many of them, including but not limited to the type system, common conventions and documentation. We will discuss them a little later. The third question is what characteristics do these different solutions have? For what interests us, we can roughly categorize them with the following characteristics:
+
 - When the contract takes effect
 - How the contract takes effect
 - The effort to maintain the contract
@@ -44,4 +50,3 @@ Looking at the bigger picture, we want to be able to define our contracts in a (
 ## Summing Up
 
 The core of any type system is data modeling. Therefore, data models are the primary means of communication between code. Functions receive data as input and return data as output. This puts us back to my initial thought about this topic I mentioned at the beginning. Plain JavaScript does not even have a proper type system. Thus, sending data around itself does not instill any confidence. Now, what about higher-order functions? What if we want to send behavior around? Type systems from languages like Haskell can express some properties of behavior, such as if they have any side effect or what kind of side effect it has. In those programming languages, sending behavior around won't be that much of a big deal, or might even be encouraged. If the type system cannot do that, then we, as programmers, need to fall back to other contract solutions like common conventions and documentation. It does not always work but is good enough to get our job done.
-

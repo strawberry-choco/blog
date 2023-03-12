@@ -1,3 +1,8 @@
+---
+title: You might not want Rxjs
+date: 2023-02-10
+---
+
 # You might not want Rxjs
 
 <Badge type="info" text="published on 2023-02-10" />
@@ -14,10 +19,10 @@ I am, however, not convinced that Rxjs should be used for state management solut
 const store$ = new BehaviorSubject(someValue);
 
 const derived$ = store$.pipe(
-    // ... some operators later
-    switchMap(async value => {
-        return await asyncCall(value);
-    })
+  // ... some operators later
+  switchMap(async (value) => {
+    return await asyncCall(value);
+  })
 );
 
 // somewhere else
@@ -61,4 +66,3 @@ Rxjs can implement a way to invalidate downstream data. There would be, however,
 ## Closing Words
 
 I am open to ideas for how we can deal with this issue properly. Up until then, I would not recommend Rxjs based state management solutions for any applications of reasonable size.
-
